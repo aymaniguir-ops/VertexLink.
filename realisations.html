@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Réalisations — VertexLink</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding:140px 0 80px; border-bottom:1px solid var(--light) }
+.page-hero h1 { font-family:'Syne',sans-serif; font-weight:800; font-size:2.2rem; letter-spacing:-.025em; margin-bottom:16px }
+.page-hero p { font-size:.9rem; color:var(--grey); max-width:480px; line-height:1.75 }
+
+/* Grid projets */
+.proj-grid { margin-top:60px; display:flex; flex-direction:column; gap:0 }
+.proj-item {
+  display:grid; grid-template-columns:1fr 1fr;
+  border:1px solid var(--light); border-radius:12px;
+  overflow:hidden; margin-bottom:16px;
+  transition:box-shadow .25s;
+}
+.proj-item:hover { box-shadow:0 6px 28px rgba(0,0,0,.07) }
+/* mockup navigateur */
+.proj-visual { background:var(--off); position:relative }
+.pv-chrome {
+  height:28px; background:rgba(255,255,255,.9);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  display:flex; align-items:center; gap:4px; padding:0 12px;
+}
+.dot { width:7px; height:7px; border-radius:50% }
+.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
+.pv-url { flex:1; margin-left:8px; font-size:.6rem; color:var(--grey); font-family:'Inter',sans-serif }
+.pv-body { padding:16px; display:flex; flex-direction:column; gap:7px; min-height:200px }
+.pw { border-radius:3px; background:rgba(0,0,0,.08) }
+.pw.xl{height:11px;width:58%}.pw.lg{height:8px;width:78%}.pw.sm{height:6px;width:42%}
+.pw.accent{background:rgba(0,87,255,.15);width:28%;height:8px}
+/* score scores bars */
+.pv-scores {
+  position:absolute; bottom:16px; right:16px;
+  display:flex; flex-direction:column; gap:5px;
+  background:white; border:1px solid var(--light); border-radius:8px; padding:10px 12px;
+  min-width:110px;
+}
+.sc-row { display:flex; align-items:center; justify-content:space-between; gap:10px }
+.sc-lbl { font-size:.58rem; color:var(--grey) }
+.sc-bar { flex:1; height:3px; background:#eee; border-radius:2px; overflow:hidden }
+.sc-fill { height:100%; background:var(--black); border-radius:2px; transform:scaleX(0); transform-origin:left; transition:transform 1s cubic-bezier(.16,1,.3,1) }
+.sc-fill.go { transform:scaleX(1) }
+.sc-val { font-size:.6rem; font-weight:500; color:var(--black); min-width:22px; text-align:right }
+.sc-val.g { color:#16a34a }
+/* info */
+.proj-info { padding:36px; display:flex; flex-direction:column; justify-content:center; gap:12px }
+.proj-number { font-size:.72rem; color:var(--grey) }
+.proj-name { font-family:'Syne',sans-serif; font-weight:700; font-size:1.3rem; letter-spacing:-.02em }
+.proj-client { font-size:.82rem; color:var(--grey) }
+.proj-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:4px }
+.tag { font-size:.7rem; color:var(--grey); border:1px solid var(--light); padding:3px 10px; border-radius:4px }
+.proj-stack { margin-top:8px; font-size:.78rem; color:var(--grey); line-height:1.6 }
+.proj-stack strong { color:var(--black); font-weight:500 }
+.proj-link { margin-top:12px }
+
+.cta-band { background:var(--black); border-radius:16px; padding:64px 56px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; margin-top:60px }
+.cta-band h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:2rem; letter-spacing:-.03em; color:white; max-width:440px }
+.btn-white { background:white; color:var(--black); font-size:.82rem; font-weight:500; padding:12px 26px; border-radius:8px; display:inline-flex; align-items:center; gap:8px; transition:opacity .2s; white-space:nowrap }
+.btn-white:hover { opacity:.9 }
+
+@media(max-width:768px){
+  .page-hero{padding:100px 0 48px}
+  .proj-item{grid-template-columns:1fr}
+  .proj-visual{min-height:200px}
+  .pv-scores{display:none}
+  .cta-band{padding:36px 24px;flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="prog"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">VertexLink</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="realisations.html" class="active">Réalisations</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-btn">Démarrer un projet</a>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="container">
+      <p class="label rv">Réalisations</p>
+      <h1 class="rv d1">Nos projets</h1>
+      <p class="rv d2">Chaque projet livré est un site codé entièrement à la main, optimisé pour la performance et conçu pour convertir.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="proj-grid">
+
+        <!-- Projet 01 -->
+        <div class="proj-item rv">
+          <div class="proj-visual">
+            <div class="pv-chrome">
+              <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+              <span class="pv-url">socialforma.fr</span>
+            </div>
+            <div class="pv-body">
+              <div class="pw xl"></div>
+              <div class="pw lg"></div>
+              <div class="pw sm"></div>
+              <div style="margin-top:10px"><div class="pw accent"></div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px">
+                <div style="background:rgba(255,255,255,.7);border-radius:4px;padding:8px;display:flex;flex-direction:column;gap:4px"><div class="pw" style="height:6px;background:rgba(0,87,255,.15)"></div><div class="pw sm"></div></div>
+                <div style="background:rgba(255,255,255,.7);border-radius:4px;padding:8px;display:flex;flex-direction:column;gap:4px"><div class="pw" style="height:6px"></div><div class="pw sm"></div></div>
+                <div style="background:rgba(255,255,255,.7);border-radius:4px;padding:8px;display:flex;flex-direction:column;gap:4px"><div class="pw" style="height:6px"></div><div class="pw sm"></div></div>
+              </div>
+            </div>
+            <div class="pv-scores">
+              <div class="sc-row"><span class="sc-lbl">Perf.</span><div class="sc-bar"><div class="sc-fill" data-w=".98"></div></div><span class="sc-val g">98</span></div>
+              <div class="sc-row"><span class="sc-lbl">SEO</span><div class="sc-bar"><div class="sc-fill" data-w="1"></div></div><span class="sc-val g">100</span></div>
+              <div class="sc-row"><span class="sc-lbl">A11y</span><div class="sc-bar"><div class="sc-fill" data-w=".95"></div></div><span class="sc-val">95</span></div>
+            </div>
+          </div>
+          <div class="proj-info">
+            <span class="proj-number">01</span>
+            <div class="proj-name">SocialForma</div>
+            <div class="proj-client">Cabinet conseil URSSAF — France</div>
+            <div class="proj-tags">
+              <span class="tag">Site vitrine</span>
+              <span class="tag">Multi-pages</span>
+              <span class="tag">2025</span>
+            </div>
+            <p class="proj-stack"><strong>Stack :</strong> HTML5, CSS Grid, JavaScript, GSAP, Formspree, Schema.org, Netlify</p>
+          </div>
+        </div>
+
+        <!-- Projet 02 -->
+        <div class="proj-item rv d1">
+          <div class="proj-visual" style="background:#f0eeff">
+            <div class="pv-chrome">
+              <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+              <span class="pv-url">viraly.ia</span>
+            </div>
+            <div class="pv-body">
+              <div class="pw" style="background:rgba(124,58,237,.2);height:12px;width:55%"></div>
+              <div class="pw lg" style="margin-top:5px"></div>
+              <div class="pw sm" style="margin-top:3px"></div>
+              <div style="margin-top:10px"><div class="pw" style="background:rgba(124,58,237,.25);height:8px;width:30%;border-radius:4px"></div></div>
+            </div>
+            <div class="pv-scores">
+              <div class="sc-row"><span class="sc-lbl">Perf.</span><div class="sc-bar"><div class="sc-fill" data-w=".97"></div></div><span class="sc-val g">97</span></div>
+              <div class="sc-row"><span class="sc-lbl">SEO</span><div class="sc-bar"><div class="sc-fill" data-w=".98"></div></div><span class="sc-val g">98</span></div>
+              <div class="sc-row"><span class="sc-lbl">Conv.</span><div class="sc-bar"><div class="sc-fill" data-w=".73"></div></div><span class="sc-val">7.3%</span></div>
+            </div>
+          </div>
+          <div class="proj-info">
+            <span class="proj-number">02</span>
+            <div class="proj-name">Viraly.ia</div>
+            <div class="proj-client">SaaS IA — Génération de contenu viral</div>
+            <div class="proj-tags">
+              <span class="tag">Landing page</span>
+              <span class="tag">SaaS</span>
+              <span class="tag">2025</span>
+            </div>
+            <p class="proj-stack"><strong>Stack :</strong> Canvas API, GSAP ScrollTrigger, CSS Custom Properties, Netlify</p>
+          </div>
+        </div>
+
+        <!-- Projet 03 -->
+        <div class="proj-item rv d2">
+          <div class="proj-visual" style="background:#edf7f4">
+            <div class="pv-chrome">
+              <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+              <span class="pv-url">portfolio-ayman.fr</span>
+            </div>
+            <div class="pv-body">
+              <div class="pw" style="background:rgba(5,150,105,.18);height:12px;width:52%"></div>
+              <div class="pw lg" style="margin-top:5px"></div>
+              <div class="pw sm" style="margin-top:3px"></div>
+              <div style="margin-top:10px;display:flex;gap:6px">
+                <div class="pw" style="background:rgba(5,150,105,.2);height:8px;width:22%;border-radius:4px"></div>
+                <div class="pw sm" style="border-radius:4px;height:8px"></div>
+              </div>
+            </div>
+            <div class="pv-scores">
+              <div class="sc-row"><span class="sc-lbl">Perf.</span><div class="sc-bar"><div class="sc-fill" data-w="1"></div></div><span class="sc-val g">100</span></div>
+              <div class="sc-row"><span class="sc-lbl">SEO</span><div class="sc-bar"><div class="sc-fill" data-w="1"></div></div><span class="sc-val g">100</span></div>
+              <div class="sc-row"><span class="sc-lbl">A11y</span><div class="sc-bar"><div class="sc-fill" data-w=".98"></div></div><span class="sc-val g">98</span></div>
+            </div>
+          </div>
+          <div class="proj-info">
+            <span class="proj-number">03</span>
+            <div class="proj-name">Portfolio Ayman</div>
+            <div class="proj-client">Portfolio personnel — Développeur web</div>
+            <div class="proj-tags">
+              <span class="tag">Portfolio</span>
+              <span class="tag">Multi-pages</span>
+              <span class="tag">2025</span>
+            </div>
+            <p class="proj-stack"><strong>Stack :</strong> HTML5, CSS Scroll Animations, Formspree, Netlify CI/CD</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cta-band rv">
+        <h2>Votre projet est le prochain.</h2>
+        <a href="contact.html" class="btn-white">
+          Nous contacter
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-logo">VertexLink</span>
+    <div class="footer-links">
+      <a href="services.html">Services</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="contact.html">Contact</a>
+      <a href="/cdn-cgi/l/email-protection#c4b2a1b6b0a1bca8adaaaff7f784a3a9a5ada8eaa7aba9"><span class="__cf_email__" data-cfemail="205645525445584c494e4b131360474d41494c0e434f4d">[email&#160;protected]</span></a>
+    </div>
+    <span class="footer-copy">© 2025 VertexLink</span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="main.js"></script>
+<script>
+// Score bars animation
+const sobs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.sc-fill').forEach((b, i) => {
+        setTimeout(() => { b.style.widt

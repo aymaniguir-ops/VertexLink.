@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Services — VertexLink</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding:140px 0 80px; border-bottom:1px solid var(--light) }
+.page-hero h1 { font-family:'Syne',sans-serif; font-weight:800; font-size:2.2rem; letter-spacing:-.025em; margin-bottom:16px }
+.page-hero p { font-size:.9rem; color:var(--grey); max-width:480px; line-height:1.75 }
+
+/* Offre cards */
+.offer-list { display:flex; flex-direction:column; gap:0; margin-top:60px }
+.offer {
+  display:grid; grid-template-columns:200px 1fr 160px;
+  gap:40px; align-items:start;
+  padding:48px 0; border-bottom:1px solid var(--light);
+  transition:background .15s; border-radius:0;
+}
+.offer:first-child { border-top:1px solid var(--light) }
+.offer-num { font-size:.78rem; color:var(--grey); padding-top:4px }
+.offer-name {
+  font-family:'Syne',sans-serif; font-weight:700;
+  font-size:1.4rem; letter-spacing:-.02em; margin-bottom:12px;
+}
+.offer-desc { font-size:.85rem; color:var(--grey); line-height:1.75; margin-bottom:20px; max-width:520px }
+.offer-feats { display:flex; flex-wrap:wrap; gap:8px }
+.feat {
+  font-size:.75rem; color:var(--grey);
+  background:var(--off); border:1px solid var(--light);
+  padding:4px 12px; border-radius:5px;
+}
+.offer-price {
+  font-family:'Syne',sans-serif; font-weight:700;
+  font-size:1.4rem; letter-spacing:-.02em;
+  text-align:right; padding-top:4px;
+}
+.offer-price small { display:block; font-size:.75rem; font-weight:400; color:var(--grey); font-family:'Inter',sans-serif; margin-top:2px }
+
+/* Pourquoi nous */
+.why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:48px }
+.why-item { padding:28px; background:var(--off); border-radius:10px }
+.why-icon { font-size:1.2rem; margin-bottom:12px }
+.why-item h4 { font-family:'Syne',sans-serif; font-size:.95rem; font-weight:700; margin-bottom:8px }
+.why-item p { font-size:.8rem; color:var(--grey); line-height:1.65 }
+
+.cta-band { background:var(--black); border-radius:16px; padding:64px 56px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; margin-top:80px }
+.cta-band h2 { font-family:'Syne',sans-serif; font-weight:800; font-size:2rem; letter-spacing:-.03em; color:white; max-width:440px }
+.btn-white { background:white; color:var(--black); font-size:.82rem; font-weight:500; padding:12px 26px; border-radius:8px; display:inline-flex; align-items:center; gap:8px; transition:opacity .2s; white-space:nowrap }
+.btn-white:hover { opacity:.9 }
+
+@media(max-width:768px){
+  .page-hero{padding:100px 0 48px}
+  .offer{grid-template-columns:1fr;gap:12px}
+  .offer-price{text-align:left}
+  .why-grid{grid-template-columns:1fr}
+  .cta-band{padding:36px 24px;flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="prog"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">VertexLink</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="realisations.html">Réalisations</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-btn">Démarrer un projet</a>
+</nav>
+
+<main>
+  <div class="page-hero">
+    <div class="container">
+      <p class="label rv">Services</p>
+      <h1 class="rv d1">Nos prestations</h1>
+      <p class="rv d2">Chaque projet est unique. On code tout à la main, sans template, pour que votre site ressemble à votre marque — et pas à celle du voisin.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="offer-list">
+        <div class="offer rv">
+          <span class="offer-num">01</span>
+          <div>
+            <div class="offer-name">Site Vitrine</div>
+            <p class="offer-desc">Idéal pour présenter votre activité, attirer des clients et vous démarquer. Multi-pages, design sur mesure, SEO technique intégré dès le départ.</p>
+            <div class="offer-feats">
+              <span class="feat">Jusqu'à 6 pages</span>
+              <span class="feat">Mobile-first</span>
+              <span class="feat">SEO + Schema.org</span>
+              <span class="feat">Formulaire de contact</span>
+              <span class="feat">Déploiement Netlify</span>
+              <span class="feat">Livraison 14 jours</span>
+            </div>
+          </div>
+          <div class="offer-price">497 €<small>paiement en 2x possible</small></div>
+        </div>
+        <div class="offer rv d1">
+          <span class="offer-num">02</span>
+          <div>
+            <div class="offer-name">Landing Page</div>
+            <p class="offer-desc">Une seule page, un seul objectif. Structure pensée pour convertir, avec Pixel Meta, analytics et copy optimisé.</p>
+            <div class="offer-feats">
+              <span class="feat">Copywriting inclus</span>
+              <span class="feat">Pixel Meta</span>
+              <span class="feat">A/B testing ready</span>
+              <span class="feat">Score Lighthouse 95+</span>
+              <span class="feat">Livraison 7 jours</span>
+            </div>
+          </div>
+          <div class="offer-price">297 €<small>paiement en 2x possible</small></div>
+        </div>
+        <div class="offer rv d2">
+          <span class="offer-num">03</span>
+          <div>
+            <div class="offer-name">Audit & Refonte</div>
+            <p class="offer-desc">Votre site existe déjà mais sous-performe ? On audite, on identifie les problèmes, et on reconstruit ce qui bloque vos résultats.</p>
+            <div class="offer-feats">
+              <span class="feat">Audit Lighthouse</span>
+              <span class="feat">Core Web Vitals</span>
+              <span class="feat">Analyse SEO</span>
+              <span class="feat">Refonte UX/UI</span>
+              <span class="feat">Rapport détaillé</span>
+            </div>
+          </div>
+          <div class="offer-price">Sur devis<small>devis gratuit en 24h</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="section">
+    <div class="container">
+      <p class="label rv">Pourquoi VertexLink</p>
+      <h2 class="title rv d1">Ce qui nous différencie</h2>
+      <div class="why-grid">
+        <div class="why-item rv d1">
+          <div class="why-icon">⚡</div>
+          <h4>Code 100% sur mesure</h4>
+          <p>Aucun template, aucun page-builder. Chaque ligne est écrite pour votre projet.</p>
+        </div>
+        <div class="why-item rv d2">
+          <div class="why-icon">📈</div>
+          <h4>Performance mesurée</h4>
+          <p>Score Lighthouse 95+ sur chaque livraison. Performance, SEO, accessibilité.</p>
+        </div>
+        <div class="why-item rv d3">
+          <div class="why-icon">🗓</div>
+          <h4>Délai tenu</h4>
+          <p>Devis, validation, livraison. Le planning est respecté, point.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta-band rv">
+        <h2>Un projet en tête ?</h2>
+        <a href="contact.html" class="btn-white">
+          Obtenir un devis gratuit
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-logo">VertexLink</span>
+    <div class="footer-links">
+      <a href="services.html">Services</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="contact.html">Contact</a>
+      <a href="/cdn-cgi/l/email-protection#196f7c6b6d7c61757077722a2a597e74787075377a7674"><span class="__cf_email__" data-cfemail="5a2c3f282e3f223633343169691a3d373b333674393537">[email&#160;protected]</spa

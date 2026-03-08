@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VertexLink — Agence Web</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── Hero ── */
+.hero {
+  padding-top:64px; min-height:100vh;
+  display:flex; flex-direction:column; justify-content:center;
+  border-bottom:1px solid var(--light);
+}
+.hero-inner {
+  max-width:1100px; margin:0 auto; padding:80px 60px;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:80px; align-items:center;
+}
+.hero-tag {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:.75rem; color:var(--grey);
+  border:1px solid var(--light); border-radius:100px;
+  padding:4px 12px; margin-bottom:24px;
+}
+.hero-tag span { width:6px; height:6px; border-radius:50%; background:#22c55e }
+.hero h1 {
+  font-family:'Syne',sans-serif; font-weight:800;
+  font-size:2.2rem; line-height:1.2; letter-spacing:-.025em;
+  margin-bottom:20px;
+}
+.hero h1 em { font-style:normal; color:var(--blue) }
+.hero p { font-size:.9rem; line-height:1.75; color:var(--grey); margin-bottom:32px; max-width:400px }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap }
+/* right side — stats block */
+.hero-stats {
+  background:var(--off); border:1px solid var(--light);
+  border-radius:16px; padding:32px;
+  display:grid; grid-template-columns:1fr 1fr; gap:1px;
+  background:var(--light); overflow:hidden;
+}
+.stat {
+  background:var(--off); padding:28px 24px;
+  display:flex; flex-direction:column; gap:6px;
+}
+.stat-val {
+  font-family:'Syne',sans-serif; font-weight:800;
+  font-size:2rem; letter-spacing:-.04em; color:var(--black);
+}
+.stat-lbl { font-size:.78rem; color:var(--grey); line-height:1.4 }
+
+/* ── Services preview ── */
+.svc-row {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:1px; background:var(--light);
+  border:1px solid var(--light); border-radius:12px; overflow:hidden;
+  margin-top:48px;
+}
+.svc-cell {
+  background:var(--white); padding:32px 28px;
+  transition:background .2s;
+}
+.svc-cell:hover { background:var(--off) }
+.svc-num { font-size:.72rem; color:var(--grey); margin-bottom:16px }
+.svc-name {
+  font-family:'Syne',sans-serif; font-weight:700;
+  font-size:1.05rem; margin-bottom:8px;
+}
+.svc-desc { font-size:.8rem; color:var(--grey); line-height:1.65; margin-bottom:16px }
+.svc-price { font-size:.78rem; font-weight:500; color:var(--black) }
+
+/* ── Process row ── */
+.process-row {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0; border:1px solid var(--light); border-radius:12px; overflow:hidden; margin-top:48px;
+}
+.process-step {
+  padding:28px 24px; border-right:1px solid var(--light);
+  transition:background .2s;
+}
+.process-step:last-child { border-right:none }
+.process-step:hover { background:var(--off) }
+.step-num { font-size:.72rem; color:var(--grey); margin-bottom:12px }
+.step-name {
+  font-family:'Syne',sans-serif; font-weight:700;
+  font-size:.95rem; margin-bottom:8px;
+}
+.step-desc { font-size:.78rem; color:var(--grey); line-height:1.6 }
+
+/* ── Projects preview ── */
+.proj-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:16px; margin-top:48px;
+}
+.proj-card {
+  border:1px solid var(--light); border-radius:12px;
+  overflow:hidden; transition:box-shadow .25s;
+}
+.proj-card:hover { box-shadow:0 6px 28px rgba(0,0,0,.08) }
+.proj-thumb {
+  aspect-ratio:16/9; background:var(--off);
+  position:relative; overflow:hidden;
+  display:flex; align-items:flex-end;
+}
+.proj-thumb-inner {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column;
+}
+.pc-bar {
+  height:24px; background:rgba(255,255,255,.85);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  display:flex; align-items:center; gap:4px; padding:0 10px; flex-shrink:0;
+}
+.dot { width:7px; height:7px; border-radius:50% }
+.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
+.pc-body { flex:1; padding:12px; display:flex; flex-direction:column; gap:6px }
+.pw { border-radius:3px; background:rgba(0,0,0,.08) }
+.pw.xl { height:10px; width:55% }
+.pw.lg { height:7px; width:75% }
+.pw.sm { height:6px; width:40% }
+.pw.bl { background:rgba(0,87,255,.15); width:25%; height:7px }
+.proj-badge {
+  position:absolute; bottom:12px; right:12px;
+  font-size:.65rem; background:white; border:1px solid var(--light);
+  padding:3px 9px; border-radius:4px; color:var(--grey);
+}
+.proj-meta { padding:20px 20px 20px }
+.proj-meta h3 {
+  font-family:'Syne',sans-serif; font-weight:700;
+  font-size:1rem; margin-bottom:6px;
+}
+.proj-meta p { font-size:.78rem; color:var(--grey) }
+.proj-tags { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap }
+.tag {
+  font-size:.68rem; color:var(--grey);
+  border:1px solid var(--light); padding:3px 9px; border-radius:4px;
+}
+
+/* ── CTA band ── */
+.cta-band {
+  background:var(--black); border-radius:16px; padding:64px 56px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:32px; flex-wrap:wrap; margin-top:80px;
+}
+.cta-band h2 {
+  font-family:'Syne',sans-serif; font-weight:800;
+  font-size:2rem; letter-spacing:-.03em; color:white; max-width:440px;
+}
+.btn-white {
+  background:white; color:var(--black);
+  font-size:.82rem; font-weight:500;
+  padding:12px 26px; border-radius:8px;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:opacity .2s; white-space:nowrap;
+}
+.btn-white:hover { opacity:.9 }
+
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;padding:60px 20px;gap:40px}
+  .hero-stats{display:none}
+  .svc-row{grid-template-columns:1fr}
+  .process-row{grid-template-columns:1fr 1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .cta-band{padding:36px 24px;flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="prog"></div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">VertexLink</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Accueil</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="realisations.html">Réalisations</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-btn">Démarrer un projet</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag"><span></span>Agence disponible</div>
+        <h1>
+          Des sites web qui<br>
+          <em>convertissent vraiment.</em>
+        </h1>
+        <p>Design sur mesure, code propre, livraison en 14 jours. Pas de template, pas de WordPress.</p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary">
+            Démarrer un projet
+            <svg viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="realisations.html" class="btn btn-ghost">Voir les projets</a>
+        </div>
+      </div>
+      <div class="hero-stats rv d1">
+        <div class="stat"><span class="stat-val">14j</span><span class="stat-lbl">Délai de livraison moyen</span></div>
+        <div class="stat"><span class="stat-val">100</span><span class="stat-lbl">Score Lighthouse moyen</span></div>
+        <div class="stat"><span class="stat-val">0</span><span class="stat-lbl">Templates utilisés</span></div>
+        <div class="stat"><span class="stat-val">3+</span><span class="stat-lbl">Projets livrés en 2025</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="container">
+      <div class="rv">
+        <p class="label">Services</p>
+        <h2 class="title">Ce qu'on construit</h2>
+      </div>
+      <div class="svc-row rv d1">
+        <div class="svc-cell">
+          <div class="svc-num">01</div>
+          <div class="svc-name">Site Vitrine</div>
+          <p class="svc-desc">Multi-pages, design exclusif, SEO technique, Formspree, Netlify. Livraison 14 jours.</p>
+          <div class="svc-price">à partir de 497 €</div>
+        </div>
+        <div class="svc-cell">
+          <div class="svc-num">02</div>
+          <div class="svc-name">Landing Page</div>
+          <p class="svc-desc">Une page orientée conversion. Pixel Meta, analytics, score Lighthouse 95+.</p>
+          <div class="svc-price">à partir de 297 €</div>
+        </div>
+        <div class="svc-cell">
+          <div class="svc-num">03</div>
+          <div class="svc-name">Audit & Refonte</div>
+          <p class="svc-desc">Diagnostic complet, Core Web Vitals, SEO, UX. Votre site remis à niveau.</p>
+          <div class="svc-price">Sur devis</div>
+        </div>
+      </div>
+      <div style="margin-top:24px; text-align:right">
+        <a href="services.html" class="btn btn-ghost rv d2">Voir tous les services →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- RÉALISATIONS -->
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px" class="rv">
+        <div>
+          <p class="label">Réalisations</p>
+          <h2 class="title">Projets récents</h2>
+        </div>
+        <a href="realisations.html" class="btn btn-ghost">Tous les projets →</a>
+      </div>
+      <div class="proj-grid">
+        <div class="proj-card rv d1">
+          <div class="proj-thumb">
+            <div class="proj-thumb-inner">
+              <div class="pc-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+              <div class="pc-body">
+                <div class="pw xl"></div><div class="pw lg"></div><div class="pw sm"></div>
+                <div style="margin-top:8px;display:flex;gap:6px"><div class="pw bl"></div></div>
+              </div>
+            </div>
+            <div class="proj-badge">Lighthouse 98</div>
+          </div>
+          <div class="proj-meta">
+            <h3>SocialForma</h3>
+            <p>Cabinet conseil en conformité sociale</p>
+            <div class="proj-tags">
+              <span class="tag">Site vitrine</span>
+              <span class="tag">HTML / CSS / JS</span>
+              <span class="tag">2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card rv d2">
+          <div class="proj-thumb" style="background:#f0eeff">
+            <div class="proj-thumb-inner">
+              <div class="pc-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+              <div class="pc-body">
+                <div class="pw" style="background:rgba(124,58,237,.2);height:10px;width:52%"></div>
+                <div class="pw lg" style="margin-top:6px"></div>
+                <div style="margin-top:8px"><div class="pw" style="background:rgba(124,58,237,.25);height:7px;width:28%"></div></div>
+              </div>
+            </div>
+            <div class="proj-badge">Lighthouse 97</div>
+          </div>
+          <div class="proj-meta">
+            <h3>Viraly.ia</h3>
+            <p>SaaS IA — Génération de contenu viral</p>
+            <div class="proj-tags">
+              <span class="tag">Landing page</span>
+              <span class="tag">Canvas API</span>
+              <span class="tag">2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- CTA -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="cta-band rv">
+        <h2>Prêt à lancer votre projet ?</h2>
+        <a href="contact.html" class="btn-white">
+          Réserver un appel gratuit
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-logo">VertexLink</span>
+    <div class="footer-links">
+      <a href="services.html">Services</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="contact.html">Contact</a>
+      <a href="/cdn-cgi/l/email-protection#8ff9eafdfbeaf7e3e6e1e4bcbccfe8e2eee6e3a1ece0e2"><span class="__cf_email__" data-cfemail="215744535544594d484f4a121261464c40484d0f424e4c">[email&#160;protected]</span
